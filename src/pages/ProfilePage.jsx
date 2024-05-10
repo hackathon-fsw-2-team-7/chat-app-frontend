@@ -8,9 +8,9 @@ import {
     InputGroup,
 } from "react-bootstrap";
 
-export const Profile = () => {
+const Profile = () => {
     return (
-        <>
+        <div>
             <style type="text/css">
                 {`
                     .img-profile {
@@ -71,6 +71,8 @@ export const Profile = () => {
                     </Col>
                 </Row>
             </Container>
-        </>
+        </div>
     );
 };
+
+export default Profile;
