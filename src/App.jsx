@@ -1,11 +1,18 @@
 import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
+import { Profile } from "./pages/Profile";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <HomePage />,
+    },
+    {
+        path: "/profile",
+        element: <Profile />,
     },
 ]);
 
