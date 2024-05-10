@@ -24,8 +24,8 @@ export const Profile = () => {
                 `}
             </style>
             <Container className="mt-5">
-                <Row className="row">
-                    <Col className="col">
+                <Row>
+                    <Col>
                         <Card>
                             <Card.Body>
                                 <Card.Title className="text-center fs-2 mb-3">
@@ -43,7 +43,7 @@ export const Profile = () => {
                                         id="nama-addon"
                                         className="custom-label"
                                     >
-                                        Nama
+                                        Name
                                     </InputGroup.Text>
                                     <Form.Control
                                         placeholder="Linus Sebastian" // fetch from API
