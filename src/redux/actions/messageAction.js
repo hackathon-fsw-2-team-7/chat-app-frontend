@@ -20,7 +20,10 @@ export const addMessage = (payload) => async (dispatch, getState) => {
     }
 
     try {
-        const response = await axios.post(`${AppRoutes.BACKEND_BASE_API}/messages`, payload);
+        const response = await axios.post(`${AppRoutes.BACKEND_BASE_API}/messages`, {
+            body: payload,
+            createdBy: "user1", // only for now due to no auth implemented
+        });
         const {data} = response.data;
         const {messages} = getState().message;
         const newMessages = [...messages, data];
