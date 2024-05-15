@@ -1,13 +1,13 @@
-import {Col, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {getAllMessages} from "../../redux/actions/messageAction.js";
 import {io} from "socket.io-client";
 import MessageItem from "./MessageItem.jsx";
 import AddMessage from "./AddMessage.jsx";
-import AppRoutes from "../../utils/constants/appRoutes.js";
+import AppSecret from "../../utils/appSecret.js";
 
-const socket = io(AppRoutes.BACKEND_BASE_API);
+const socket = io(AppSecret.BACKEND_BASE_API);
 
 export default function HomePage() {
     const dispatch = useDispatch();
@@ -25,10 +25,12 @@ export default function HomePage() {
     // This useEffect is to connect to backend websocket (socket.io)
     useEffect(() => {
         // Connect to backend
-        socket.on("connect", () => {});
+        socket.on("connect", (data) => {
+            console.log(data.message);
+        });
 
         // It will listen the event name "getMessage"
-        socket.on("getMessage", (message) => {
+        socket.on("message", (message) => {
             console.log("aku dijalankan!", message);
             dispatch(getAllMessages());
         });
@@ -47,22 +49,24 @@ export default function HomePage() {
 
     return (
         <>
-            <Row className="mt-4">
-                <Col>
-                    <h6>{isTyping && "someone is typing a message..."}</h6>
-                </Col>
-            </Row>
+            <Container>
+                <Row className="mt-4">
+                    <Col>
+                        <h6>{isTyping && "someone is typing a message..."}</h6>
+                    </Col>
+                </Row>
 
-            <Row className="mt-4">
-                <Col>
-                    {messages?.length > 0 &&
-                        messages?.map((message) => (
-                            <MessageItem message={message} key={message.id} />
-                        ))}
-                </Col>
+                <Row className="mt-4">
+                    <Col>
+                        {messages?.length > 0 &&
+                            messages?.map((message) => (
+                                <MessageItem message={message} key={message.id}/>
+                            ))}
+                    </Col>
 
-                <AddMessage socket={socket} />
-            </Row>
+                    <AddMessage socket={socket}/>
+                </Row>
+            </Container>
         </>
     );
 }

@@ -1,20 +1,21 @@
-import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import HomePage from "./pages/home/HomePage.jsx";
 import Register from "./pages/Register";
 import LoginPage from "./pages/LoginPage";
-import AppRoutes from "./utils/constants/appRoutes.js";
+import AppRoutes from "./utils/appRoutes.js";
 import {Provider} from "react-redux";
 import store from "./redux/store.js";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
-import {Container} from "react-bootstrap";
+import AppNavbar from "./components/AppNavbar.jsx";
 
 const router = createBrowserRouter([
     {
         path: AppRoutes.HOME,
         element: (
             <>
+                <AppNavbar/>
                 <HomePage/>
             </>
         ),
@@ -41,9 +42,7 @@ export default function App() {
     return (
         <>
             <Provider store={store}>
-                <Container>
-                    <RouterProvider router={router}/>
-                </Container>
+                <RouterProvider router={router}/>
                 <ToastContainer theme={"colored"}/>
             </Provider>
         </>

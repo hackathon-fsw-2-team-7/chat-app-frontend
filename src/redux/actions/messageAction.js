@@ -1,11 +1,11 @@
 import {toast} from "react-toastify";
 import axios from "axios";
-import AppRoutes from "../../utils/constants/appRoutes.js";
 import {setMessages} from "../reducers/messageReducer.js";
+import AppSecret from "../../utils/appSecret.js";
 
 export const getAllMessages = () => async (dispatch) => {
     try {
-        const response = await axios.get(`${AppRoutes.BACKEND_BASE_API}/messages`);
+        const response = await axios.get(`${AppSecret.BACKEND_BASE_API}/messages`);
         const {data} = response.data;
 
         dispatch(setMessages(data));
@@ -20,7 +20,7 @@ export const addMessage = (payload) => async (dispatch, getState) => {
     }
 
     try {
-        const response = await axios.post(`${AppRoutes.BACKEND_BASE_API}/messages`, {
+        const response = await axios.post(`${AppSecret.BACKEND_BASE_API}/messages`, {
             body: payload,
             createdBy: "user1", // only for now due to no auth implemented
         });
