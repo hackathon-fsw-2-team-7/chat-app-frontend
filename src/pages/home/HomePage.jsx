@@ -7,7 +7,7 @@ import MessageItem from "./MessageItem.jsx";
 import AddMessage from "./AddMessage.jsx";
 import AppSecret from "../../utils/appSecret.js";
 
-const socket = io(AppSecret.BACKEND_BASE_API);
+const socket = io(AppSecret.SOCKET_BASE_API);
 
 export default function HomePage() {
     const dispatch = useDispatch();
@@ -26,10 +26,10 @@ export default function HomePage() {
     useEffect(() => {
         // Connect to backend
         socket.on("connect", (data) => {
-            console.log(data.message);
+            console.log(data);
         });
 
-        // It will listen the event name "getMessage"
+        // It will listen the event name "message"
         socket.on("message", (message) => {
             console.log("aku dijalankan!", message);
             dispatch(getAllMessages());
@@ -50,6 +50,7 @@ export default function HomePage() {
     return (
         <>
             <Container>
+                <AddMessage socket={socket}/>
                 <Row className="mt-4">
                     <Col>
                         <h6>{isTyping && "someone is typing a message..."}</h6>
@@ -63,8 +64,6 @@ export default function HomePage() {
                                 <MessageItem message={message} key={message.id}/>
                             ))}
                     </Col>
-
-                    <AddMessage socket={socket}/>
                 </Row>
             </Container>
         </>

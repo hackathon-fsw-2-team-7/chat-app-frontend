@@ -33,6 +33,7 @@ export default function AppNavbar() {
                                 <>
                                     <Nav.Link as={Link} to={AppRoutes.HOME}>Home</Nav.Link>
                                     <Nav.Link as={Link} to={"#"}>My Profile</Nav.Link>
+                                    <Nav.Link as={Link} to={"#"}>Logout</Nav.Link>
                                 </>
                             </Nav>
                         </Offcanvas.Body>

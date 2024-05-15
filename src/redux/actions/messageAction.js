@@ -22,7 +22,7 @@ export const addMessage = (payload) => async (dispatch, getState) => {
     try {
         const response = await axios.post(`${AppSecret.BACKEND_BASE_API}/messages`, {
             body: payload,
-            createdBy: "user1", // only for now due to no auth implemented
+            createdBy: "user2", // only for now due to no auth implemented
         });
         const {data} = response.data;
         const {messages} = getState().message;
