@@ -1,9 +1,14 @@
-import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import Register from "./pages/Register";
-import LoginPage from "./pages/LoginPage";
+import { ToastContainer } from "react-toastify";
+import { Container } from "react-bootstrap";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
+import HomePage from "./pages/Home";
+import Register from "./pages/Register";
+import LoginPage from "./pages/Login";
+
+import "bootstrap/dist/css/bootstrap.min.css"; // apply bootstrap for styling
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -16,12 +21,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <LoginPage />,
+    element: (
+      <Container className="mt-5">
+        <LoginPage />
+      </Container>
+    ),
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+      <RouterProvider router={router} />
+    </GoogleOAuthProvider>
+  );
 }
 
 export default App;
