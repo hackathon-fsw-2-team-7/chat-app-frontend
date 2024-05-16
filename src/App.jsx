@@ -1,30 +1,49 @@
-import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import HomePage  from "./pages/HomePage";
-import Register from "./pages/Register"
 import { ToastContainer } from "react-toastify";
-import { Provider } from "react-redux";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "react-toastify/dist/ReactToastify.css";
+import { Container } from "react-bootstrap";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import store from "./redux/store";
-import LoginPage from "./pages/LoginPage";
-import ProfilePage from "./pages/ProfilePage";
+import { Provider } from "react-redux";
 
+import Register from "./pages/Register";
+import LoginPage from "./pages/Login";
+import HomePage from "./pages/Home";
+import ProfilePage from "./pages/Profile/ProfilePage";
+
+import Protected from "./components/Protected";
+import NonProtected from "./components/NonProtected";
+
+import "bootstrap/dist/css/bootstrap.min.css"; // apply bootstrap for styling
+import "react-toastify/dist/ReactToastify.css";
+
+import store from "./redux/store";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <HomePage />,
-    },
-    {
-      path: "/register",
-      element: <Register />,
+  {
+    path: "/",
+    element: (
+      // <Protected>
+      <HomePage />
+      // </Protected>
+    ),
+  },
+  {
+    path: "/register",
+    element: (
+      // <NonProtected>
+      <Register />
+      // </NonProtected>
+    ),
   },
   {
     path: "/login",
-    element: <LoginPage />,
-},
+    element: (
+      // <NonProtected>
+      <Container className="mt-5">
+        <LoginPage />
+      </Container>
+      // </NonProtected>
+    ),
+  },
   {
     path: "/profile",
     element: <ProfilePage />,
