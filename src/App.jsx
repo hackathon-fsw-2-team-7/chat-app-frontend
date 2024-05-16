@@ -3,11 +3,11 @@ import { ToastContainer } from "react-toastify";
 import { Container } from "react-bootstrap";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Provider } from "react-redux";
-import ProfilePage from "./pages/ProfilePage";
 
-import HomePage from "./pages/Home";
 import Register from "./pages/Register";
 import LoginPage from "./pages/Login";
+import HomePage from "./pages/Home";
+import ProfilePage from "./pages/Profile/ProfilePage";
 
 import Protected from "./components/Protected";
 import NonProtected from "./components/NonProtected";
