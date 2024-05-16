@@ -8,6 +8,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import store from "./redux/store";
+import LoginPage from "./pages/LoginPage";
+import ProfilePage from "./pages/ProfilePage";
+
 
 const router = createBrowserRouter([
     {
@@ -17,6 +20,14 @@ const router = createBrowserRouter([
     {
       path: "/register",
       element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+},
+  {
+    path: "/profile",
+    element: <ProfilePage />,
   },
 ]);
 
