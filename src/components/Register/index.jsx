@@ -3,8 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { register } from "../redux/actions/register";
-import GoogleLoginComponent from "./GoogleLogin";
+import { register } from "../../redux/actions/register";
+import GoogleLoginComponent from "../GoogleLogin";
 
 function Register() {
     const navigate = useNavigate();
@@ -58,7 +58,7 @@ return (
               <Button variant="outline-light" className="w-100 rounded-pill" type="submit" disabled={isLoading}>
               {isLoading ? "Processing..." : "Register"}
               </Button>
-              <h6 className="text-center">Or</h6>
+              <h6 className="text-center" my={1}>Or</h6>
               <GoogleLoginComponent/>
             </Form>
   );
