@@ -3,9 +3,6 @@ import { ToastContainer } from "react-toastify";
 import { Container } from "react-bootstrap";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Provider } from "react-redux";
-import HomePage from "./pages/HomePage";
-import Register from "./pages/Register";
-import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 
 import HomePage from "./pages/Home";
