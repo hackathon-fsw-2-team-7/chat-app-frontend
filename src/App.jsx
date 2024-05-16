@@ -1,7 +1,7 @@
 import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import HomePage  from "./pages/HomePage";
-import Register from "./pages/Register"
+import HomePage from "./pages/HomePage";
+import Register from "./pages/Register";
 import { ToastContainer } from "react-toastify";
 import { Provider } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,7 +10,8 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import store from "./redux/store";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
-
+import EditProfilePage from "./pages/EditProfilePage";
+import ChangePassPage from "./pages/ChangePassPage";
 
 const router = createBrowserRouter([
     {
@@ -18,27 +19,37 @@ const router = createBrowserRouter([
         element: <HomePage />,
     },
     {
-      path: "/register",
-      element: <Register />,
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
-},
-  {
-    path: "/profile",
-    element: <ProfilePage />,
-  },
+        path: "/register",
+        element: <Register />,
+    },
+    {
+        path: "/login",
+        element: <LoginPage />,
+    },
+    {
+        path: "/profile",
+        element: <ProfilePage />,
+    },
+    {
+        path: "/editProfile",
+        element: <EditProfilePage />,
+    },
+    {
+        path: "/changePassword",
+        element: <ChangePassPage />,
+    },
 ]);
 
 function App() {
     return (
-    <Provider store={store}>
-      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
-        <RouterProvider router={router} />
-        <ToastContainer theme="colored" />
-        </GoogleOAuthProvider>
-    </Provider>
+        <Provider store={store}>
+            <GoogleOAuthProvider
+                clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
+            >
+                <RouterProvider router={router} />
+                <ToastContainer theme="colored" />
+            </GoogleOAuthProvider>
+        </Provider>
     );
 }
 

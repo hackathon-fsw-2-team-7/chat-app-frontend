@@ -22,46 +22,87 @@ function Register() {
 
         // dispatch the register action
         dispatch(
-            register(navigate, username, email, password, name, photo, setIsLoading)
+            register(
+                navigate,
+                username,
+                email,
+                password,
+                name,
+                photo,
+                setIsLoading
+            )
         );
     };
 
-return (
-            <Form onSubmit={onSubmit}>
-              <Form.Group className="mb-3" controlId="formBasicUsername">
+    return (
+        <Form onSubmit={onSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>Username</Form.Label>
-                <Form.Control type="text" placeholder="Enter Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-              </Form.Group>
+                <Form.Control
+                    type="text"
+                    placeholder="Enter Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                />
+            </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="text" placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-              </Form.Group>
+                <Form.Control
+                    type="text"
+                    placeholder="Enter Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+            </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-              </Form.Group>
+                <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+            </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicName">
+            <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label>Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter Name" value={name} onChange={(e) => setName(e.target.value)} required />
-              </Form.Group>
+                <Form.Control
+                    type="text"
+                    placeholder="Enter Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
+            </Form.Group>
 
-              <Form.Group className="mb-3" controlId="photo">
+            <Form.Group className="mb-3" controlId="photo">
                 <Form.Label>Profile Picture</Form.Label>
-                <Form.Control type="file" onChange={(e) => setPhoto(e.target.files[0])} />
+                <Form.Control
+                    type="file"
+                    onChange={(e) => setPhoto(e.target.files[0])}
+                    accept="image/*"
+                />
                 <Form.Text className="text-muted">
-                  Please upload your profile picture.
+                    Please upload your profile picture.
                 </Form.Text>
-              </Form.Group>
-              <Button variant="outline-light" className="w-100 rounded-pill" type="submit" disabled={isLoading}>
-              {isLoading ? "Processing..." : "Register"}
-              </Button>
-              <h6 className="text-center">Or</h6>
-              <GoogleLoginComponent/>
-            </Form>
-  );
+            </Form.Group>
+            <Button
+                variant="outline-light"
+                className="w-100 rounded-pill"
+                type="submit"
+                disabled={isLoading}
+            >
+                {isLoading ? "Processing..." : "Register"}
+            </Button>
+            <h6 className="text-center mt-2">Or</h6>
+            <GoogleLoginComponent />
+        </Form>
+    );
 }
 
 export default Register;
