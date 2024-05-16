@@ -16,7 +16,7 @@ const GoogleLogin = ({ text }) => {
   return (
     <Button
       variant="secondary"
-      type="submit"
+      type="button"
       className="w-100 text-center mt-3"
       //   disabled={isLoading}
       onClick={() => login()}

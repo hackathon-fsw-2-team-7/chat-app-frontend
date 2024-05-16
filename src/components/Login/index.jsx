@@ -1,14 +1,14 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-import { Button, Form, Col, FormGroup } from "react-bootstrap";
-// import { useDispatch } from "react-redux";
-// import { login } from "../../redux/actions/auth";
+import { useNavigate } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/actions/auth";
 
 import GoogleLogin from "../LoginGoogle";
 
 const LoginComponent = () => {
-  //   const navigate = useNavigate();
-  //   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ const LoginComponent = () => {
     e.preventDefault();
 
     // login action (fetch api)
-    // dispatch(login(navigate, email, password, setIsLoading));
+    dispatch(login(navigate, email, password, setIsLoading));
   };
 
   return (
