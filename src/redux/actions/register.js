@@ -28,9 +28,10 @@ export const register =
             console.log(response)
             // get and save the token to local storage
             const { data } = response.data;
-            const { token } = data;
+            const { token, user } = data;
             localStorage.setItem("token", token);
 
+            dispatch(setUser(user));
             // redirect to home
             navigate("/");
         } catch (error) {
