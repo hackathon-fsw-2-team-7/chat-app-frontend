@@ -169,6 +169,50 @@ export const getProfile =
     }
   };
 
+export const editProfile =
+  (navigate, username, email, name, photo, setIsLoading) =>
+  async (dispatch) => {
+    // make loading
+    setIsLoading(true);
+
+    let data = new FormData();
+    if (username) {
+      data.append("username", username);
+    }
+    if (email) {
+      data.append("email", email);
+    }
+    if (name) {
+      data.append("name", name);
+    }
+
+    if (photo) {
+      data.append("photo", photo);
+    } else {
+      data.append("photo", null);
+    }
+
+    let config = {
+      method: "patch",
+      maxBodyLength: Infinity,
+      url: `${import.meta.env.VITE_BACKEND_API}/api/edit-profile`,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      data: data,
+    };
+
+    try {
+      const response = await axios.request(config);
+      getProfile(navigate, null, null);
+      navigate("/profile");
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+
+    setIsLoading(false);
+  };
+
 export const logout = () => (dispatch) => {
   dispatch(setToken(null));
   dispatch(setUser(null));
