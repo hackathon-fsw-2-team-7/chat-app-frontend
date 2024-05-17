@@ -1,22 +1,22 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import { Container } from "react-bootstrap";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { Provider } from "react-redux";
-
+import store from "./redux/store";
 import Register from "./pages/Register";
 import LoginPage from "./pages/Login";
 import HomePage from "./pages/Home";
 import ProfilePage from "./pages/Profile";
 import EditProfilePage from "./pages/EditProfile";
 
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { Provider } from "react-redux";
+import { Container } from "react-bootstrap";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
+
 import Protected from "./components/Protected";
 import NonProtected from "./components/NonProtected";
 
-import "bootstrap/dist/css/bootstrap.min.css"; // apply bootstrap for styling
-import "react-toastify/dist/ReactToastify.css";
-
-import store from "./redux/store";
 
 const router = createBrowserRouter([
   {
