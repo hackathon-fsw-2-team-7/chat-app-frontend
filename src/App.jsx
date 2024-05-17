@@ -1,4 +1,5 @@
 import store from "./redux/store";
+import Navbar from "./components/Navbar";
 import Register from "./pages/Register";
 import LoginPage from "./pages/Login";
 import HomePage from "./pages/Home";
@@ -22,57 +23,63 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      // <Protected>
-      <HomePage />
-      // </Protected>
+      <Protected>
+        <Navbar />
+        <HomePage />
+      </Protected>
     ),
   },
   {
     path: "/register",
     element: (
-      // <NonProtected>
-      <Register />
-      // </NonProtected>
+      <NonProtected>
+        <Container className="mt-5">
+          <Register />
+        </Container>
+      </NonProtected>
     ),
   },
   {
     path: "/login",
     element: (
-      // <NonProtected>
-      <Container className="mt-5">
-        <LoginPage />
-      </Container>
-      // </NonProtected>
+      <NonProtected>
+        <Container className="mt-5">
+          <LoginPage />
+        </Container>
+      </NonProtected>
     ),
   },
   {
     path: "/profile",
     element: (
-      // <Protected>
-      <Container className="mt-5">
-        <ProfilePage />
-      </Container>
-      // </Protected>
+      <Protected>
+        <Navbar />
+        <Container className="mt-5">
+          <ProfilePage className="mt-5" />
+        </Container>
+      </Protected>
     ),
   },
   {
     path: "/edit-profile",
     element: (
-      // <Protected>
-      <Container className="mt-5">
-        <EditProfilePage />
-      </Container>
-      // </Protected>
+      <Protected>
+        <Navbar className="mb-5" />
+        <Container className="mt-5">
+          <EditProfilePage />
+        </Container>
+      </Protected>
     ),
   },
   {
     path: "/delete-user",
     element: (
-      // <Protected>
-      <Container className="mt-5">
-        <DeleteUserPage />
-      </Container>
-      // </Protected>
+      <Protected>
+        <Navbar className="mb-5" />
+        <Container className="mt-5">
+          <DeleteUserPage />
+        </Container>
+      </Protected>
     ),
   },
 ]);
