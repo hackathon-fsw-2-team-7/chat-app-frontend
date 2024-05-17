@@ -1,18 +1,20 @@
 import "./App.css";
 
 import store from "./redux/store";
-import LoginPage from "./pages/LoginPage";
-import ProfilePage from "./pages/ProfilePage";
-import HomePage  from "./pages/HomePage";
-import Register from "./pages/Register"
+import Register from "./pages/Register";
+import LoginPage from "./pages/Login";
+import HomePage from "./pages/Home";
+import ProfilePage from "./pages/Profile";
+import EditProfilePage from "./pages/EditProfile";
+
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { Provider } from "react-redux";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "react-toastify/dist/ReactToastify.css";
 import { Container } from "react-bootstrap";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import Protected from "./components/Protected";
 import NonProtected from "./components/NonProtected";
@@ -49,19 +51,35 @@ const router = createBrowserRouter([
   },
   {
     path: "/profile",
-    element: <ProfilePage />,
+    element: (
+      // <Protected>
+      <Container className="mt-5">
+        <ProfilePage />
+      </Container>
+      // </Protected>
+    ),
+  },
+  {
+    path: "/edit-profile",
+    element: (
+      // <Protected>
+      <Container className="mt-5">
+        <EditProfilePage />
+      </Container>
+      // </Protected>
+    ),
   },
 ]);
 
 function App() {
-    return (
+  return (
     <Provider store={store}>
       <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
         <RouterProvider router={router} />
         <ToastContainer theme="colored" />
-        </GoogleOAuthProvider>
+      </GoogleOAuthProvider>
     </Provider>
-    );
+  );
 }
 
 export default App;
