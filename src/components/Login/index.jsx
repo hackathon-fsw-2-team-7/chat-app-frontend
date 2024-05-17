@@ -56,6 +56,9 @@ const LoginComponent = () => {
       >
         {isLoading ? "Processing..." : "Login"}
       </Button>
+      <Form.Group className="my-3 text-center">
+        <h5>Or</h5>
+      </Form.Group>
       <GoogleLogin text={"Login with Google"} />
     </Form>
   );
