@@ -11,20 +11,42 @@ import { ToastContainer } from "react-toastify";
 import { Provider } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
+import { Container } from "react-bootstrap";
+
+
+import Protected from "./components/Protected";
+import NonProtected from "./components/NonProtected";
+
+
+import store from "./redux/store";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <HomePage />,
-    },
-    {
-      path: "/register",
-      element: <Register />,
+  {
+    path: "/",
+    element: (
+      // <Protected>
+      <HomePage />
+      // </Protected>
+    ),
+  },
+  {
+    path: "/register",
+    element: (
+      // <NonProtected>
+      <Register />
+      // </NonProtected>
+    ),
   },
   {
     path: "/login",
-    element: <LoginPage />,
-},
+    element: (
+      // <NonProtected>
+      <Container className="mt-5">
+        <LoginPage />
+      </Container>
+      // </NonProtected>
+    ),
+  },
   {
     path: "/profile",
     element: <ProfilePage />,
