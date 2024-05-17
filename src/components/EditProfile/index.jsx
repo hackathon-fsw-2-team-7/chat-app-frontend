@@ -122,6 +122,7 @@ const EditProfile = () => {
                 variant="warning"
                 className="w-100 rounded-pill"
                 disabled={isLoading}
+                onClick={() => navigate("/profile")}
               >
                 {isLoading ? "Processing..." : "Cancel"}
               </Button>

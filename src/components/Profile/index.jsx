@@ -108,9 +108,9 @@ const Profile = () => {
             <Button
               variant="danger"
               className="w-100 rounded-pill"
-              onClick={() => navigate("/delete-profile")}
+              onClick={() => navigate("/delete-user")}
             >
-              Delete Profile
+              Delete Account
             </Button>
           </div>
         </Card.Body>

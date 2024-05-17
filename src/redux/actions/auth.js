@@ -213,6 +213,30 @@ export const editProfile =
     setIsLoading(false);
   };
 
+export const deleteUser = (navigate, setIsLoading) => async (dispatch) => {
+  // make loading
+  setIsLoading(true);
+
+  let config = {
+    method: "delete",
+    maxBodyLength: Infinity,
+    url: `${import.meta.env.VITE_BACKEND_API}/api/delete-user`,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  };
+
+  try {
+    const response = await axios.request(config);
+    logout();
+    navigate("/login");
+  } catch (error) {
+    toast.error(error?.response?.data?.message);
+  }
+
+  setIsLoading(false);
+};
+
 export const logout = () => (dispatch) => {
   dispatch(setToken(null));
   dispatch(setUser(null));

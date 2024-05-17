@@ -4,6 +4,7 @@ import LoginPage from "./pages/Login";
 import HomePage from "./pages/Home";
 import ProfilePage from "./pages/Profile";
 import EditProfilePage from "./pages/EditProfile";
+import DeleteUserPage from "./pages/DeleteUser";
 
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -16,7 +17,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Protected from "./components/Protected";
 import NonProtected from "./components/NonProtected";
-
 
 const router = createBrowserRouter([
   {
@@ -61,6 +61,16 @@ const router = createBrowserRouter([
       // <Protected>
       <Container className="mt-5">
         <EditProfilePage />
+      </Container>
+      // </Protected>
+    ),
+  },
+  {
+    path: "/delete-user",
+    element: (
+      // <Protected>
+      <Container className="mt-5">
+        <DeleteUserPage />
       </Container>
       // </Protected>
     ),
