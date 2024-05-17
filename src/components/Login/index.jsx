@@ -49,7 +49,7 @@ const LoginComponent = () => {
       </Form.Group>
 
       <Button
-        className="w-100"
+        className="w-100 rounded-pill"
         variant="primary"
         type="submit"
         disabled={isLoading}

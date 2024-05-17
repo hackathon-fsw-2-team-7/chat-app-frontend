@@ -1,4 +1,4 @@
-import { useGoogleLogin, GoogleLogin  } from "@react-oauth/google";
+import { useGoogleLogin, GoogleLogin } from "@react-oauth/google";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -10,18 +10,18 @@ const GoogleLoginComponent = ({ text }) => {
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => {
-    console.log(codeResponse);
+      console.log(codeResponse);
       dispatch(loginWithGoogle(navigate, codeResponse?.access_token));
     },
   });
 
   return (
     <button
-    className="btn btn-outline-light w-100 rounded-pill"
-    onClick={() => login()}
-  >
-    Register with Google
-  </button>
+      className="btn btn-secondary w-100 rounded-pill"
+      onClick={() => login()}
+    >
+      Register with Google
+    </button>
   );
 };
 

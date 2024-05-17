@@ -18,7 +18,7 @@ const GoogleLogin = ({ text }) => {
     <Button
       variant="secondary"
       type="button"
-      className="w-100 text-center"
+      className="w-100 text-center rounded-pill"
       //   disabled={isLoading}
       onClick={() => login()}
     >
