@@ -1,11 +1,14 @@
-import {Container, Nav, Navbar} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Container, Image, Nav, Navbar, Offcanvas} from "react-bootstrap";
+import {Link, useNavigate} from "react-router-dom";
 import AppRoutes from "../utils/appRoutes.js";
-import {Offcanvas} from "react-bootstrap";
-import {Image} from "react-bootstrap";
 import reactLogo from "/public/assets/react.svg";
+import {logout} from "../redux/actions/auth.js";
+import {useDispatch} from "react-redux";
 
 export default function AppNavbar() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const expand = "lg";
 
     return (
@@ -32,8 +35,13 @@ export default function AppNavbar() {
                             <Nav className="justify-content-end flex-grow-1 me-3">
                                 <>
                                     <Nav.Link as={Link} to={AppRoutes.HOME}>Home</Nav.Link>
-                                    <Nav.Link as={Link} to={"#"}>My Profile</Nav.Link>
-                                    <Nav.Link as={Link} to={"#"}>Logout</Nav.Link>
+                                    <Nav.Link as={Link} onClick={() => {
+
+                                    }}>My Profile</Nav.Link>
+                                    <Nav.Link as={Link} onClick={() => {
+                                        dispatch(logout());
+                                        navigate("/login");
+                                    }}>Logout</Nav.Link>
                                 </>
                             </Nav>
                         </Offcanvas.Body>
