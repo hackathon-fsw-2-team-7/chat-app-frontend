@@ -1,5 +1,3 @@
-import "./App.css";
-
 import store from "./redux/store";
 import Register from "./pages/Register";
 import LoginPage from "./pages/Login";
@@ -19,8 +17,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Protected from "./components/Protected";
 import NonProtected from "./components/NonProtected";
 
-
-import store from "./redux/store";
 
 const router = createBrowserRouter([
   {
