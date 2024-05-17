@@ -135,7 +135,7 @@ export const getProfile =
 
     let config = {
       method: "get",
-      url: `${import.meta.env.VITE_BACKEND_API}/api/auth/profile`,
+      url: `${import.meta.env.VITE_BACKEND_API}/api/profile`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
